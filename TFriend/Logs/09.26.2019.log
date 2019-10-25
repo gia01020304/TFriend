@@ -1,0 +1,5 @@
+09/26/2019 07:06:22 ERROR - [FriendBusiness-GetListFriend:Object of type 'System.DBNull' cannot be converted to type 'System.Byte[]'.]
+09/26/2019 07:06:31 ERROR - [FriendBusiness-GetListFriend:Object of type 'System.DBNull' cannot be converted to type 'System.Byte[]'.]
+09/26/2019 07:09:51 ERROR - [FriendBusiness-GetListFriend:Object of type 'System.DBNull' cannot be converted to type 'System.Byte[]'.]
+09/26/2019 07:10:04 ERROR - [FriendBusiness-GetListFriend:Object of type 'System.DBNull' cannot be converted to type 'System.Byte[]'.]
+09/26/2019 07:11:02 ERROR - [FriendBusiness-GetListFriend:Object of type 'System.DBNull' cannot be converted to type 'System.Byte[]'.]

@@ -1,0 +1,65 @@
+﻿
+@page
+@model LoginModel
+@{
+    Layout = "_LayoutEmpty";
+}
+<!-- Row -->
+<div class="table-struct full-width full-height">
+    <div class="table-cell vertical-align-middle auth-form-wrap">
+        <div class="auth-form  ml-auto mr-auto no-float">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="mb-30">
+                        <h3 class="text-center txt-dark mb-10">Sign in to TFriend</h3>
+                        <h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
+                    </div>
+                    <div class="form-wrap">
+                        <form method="post" id="frm-login">
+                            <div class="form-group">
+                                <label asp-for="Input.Email" class="control-label mb-10"></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
+                                    <input asp-for="Input.Email" class="form-control" type="email" placeholder="Enter email" />
+                                    <span asp-validation-for="Input.Email" class="unactive"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password" class="control-label mb-10"></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                    <input asp-for="Input.Password" class="form-control" placeholder="Enter Password" />
+                                    <span asp-validation-for="Input.Password" class="unactive"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="checkbox checkbox-primary pr-10 pull-left">
+                                    <input asp-for="Input.RememberMe" class="custom-control-input" type="checkbox" />
+                                    <label class="custom-control-label" asp-for="Input.RememberMe"></label>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-info btn-rounded">sign in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Row -->
+<script>
+    createToolTip('#frm-login');
+    $(document).ready(function () {
+        @{
+            var countError = ViewContext.ViewData.ModelState.ErrorCount;
+            if (countError>0)
+            {
+                @:toastDanger("Account or password incorrect! </br> Please try again.");
+            }
+         }
+    })
+</script>

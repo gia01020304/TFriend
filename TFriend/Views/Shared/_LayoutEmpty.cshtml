@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Version = "v1.0";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>TFriend</title>
+
+    <link rel="stylesheet" href="~/hound/vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css?@ViewBag.Version" />
+    <link href="~/hound/dist/css/style.css?@ViewBag.Version" rel="stylesheet" type="text/css">
+    <link href="~/css/TFriend.css?@ViewBag.Version" rel="stylesheet" type="text/css" />
+    <link href="~/hound/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css?@ViewBag.Version" rel="stylesheet" type="text/css">
+
+    <script src="~/hound/vendors/bower_components/jquery/dist/jquery.min.js?@ViewBag.Version"></script>
+    <script src="~/jquery-ui/jquery-ui.min.js?@ViewBag.Version"></script>
+    <link href="~/jquery-ui/jquery-ui.min.css?@ViewBag.Version" rel="stylesheet" type="text/css" />
+    <script src="~/js/TFriend.js?@ViewBag.Version"></script>
+
+</head>
+<body>
+    <!--Preloader-->
+    <div class="preloader-it">
+        <div class="la-anim-1"></div>
+    </div>
+    <!--/Preloader-->
+
+    <div class="wrapper pa-0">
+        <header class="sp-header">
+            <div class="sp-logo-wrap pull-left">
+                <a href="@Url.Action("Index","Home")">
+                    <span class="brand-text">TFriend</span>
+                </a>
+            </div>
+            @if (ViewData["AuthenPage"] != null)
+            {
+                if (ViewData["AuthenPage"].ToString() == "signup")
+                {
+                    <div class="form-group mb-0 pull-right">
+                        <span class="inline-block pr-10">Don't have an account?</span>
+                        <a class="inline-block btn btn-info btn-rounded btn-outline" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group mb-0 pull-right">
+                        <span class="inline-block pr-10">Already have an account?</span>
+                        <a class="inline-block btn btn-info btn-rounded btn-outline" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+                    </div>
+                }
+            }
+
+            <div class="clearfix"></div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="page-wrapper pa-0 ma-0 auth-page">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="~/hound/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js?@ViewBag.Version"></script>
+    <script src="~/hound/vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js?@ViewBag.Version"></script>
+    <script src="~/hound/dist/js/jquery.slimscroll.js?@ViewBag.Version"></script>
+    <script src="~/hound/dist/js/init.js?@ViewBag.Version"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js?@ViewBag.Version"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js?@ViewBag.Version"></script>
+    <script src="~/hound/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js?@ViewBag.Version"></script>
+
+</body>
+</html>

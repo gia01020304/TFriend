@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Main.Model
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="dropdown auth-drp">
+        <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
+            <i class="fa fa-user fa-2x"></i>
+        </a>
+        <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+            <li>
+                <form asp-area="Identity" asp-page="/Account/Logout" method="post" asp-route-returnUrl="@Url.Page("/Account/Login", new { area = "Identity" })" id="frm-Logout"></form>
+                <a href="javascript:void(0);" id="logout"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+            </li>
+        </ul>
+    </li>
+
+    <script>
+        $('#logout').click(function () {
+            $('#frm-Logout').submit();
+        });
+    </script>
+}

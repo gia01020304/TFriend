@@ -1,0 +1,85 @@
+﻿@page
+@model RegisterModel
+@{
+    Layout = "_LayoutEmpty";
+}
+@*<h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }*@
+<div class="table-struct full-width full-height">
+    <div class="table-cell vertical-align-middle auth-form-wrap">
+        <div class="auth-form  ml-auto mr-auto no-float">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="mb-30">
+                        <h3 class="text-center txt-dark mb-10">Sign up to TFriend</h3>
+                        <h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
+                    </div>
+                    <div class="form-wrap">
+                        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" id="frm-signup">
+                            <div class="form-group">
+                                <label asp-for="Input.Email" class="control-label mb-10"></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
+                                    <input asp-for="Input.Email" class="form-control" type="email" placeholder="Enter email" />
+                                    <span asp-validation-for="Input.Email" class="unactive"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password" class="control-label mb-10"></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                    <input asp-for="Input.Password" class="form-control" placeholder="Enter Password" />
+                                    <span asp-validation-for="Input.Password" class="unactive"></span>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-info btn-rounded">sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    createToolTip('#frm-signup');
+    $(document).ready(function () {
+        @{
+            var countError = ViewContext.ViewData.ModelState.Count;
+            if (countError>0)
+            {
+                @:toastDanger("@ViewContext.ViewData.ModelState.GetMessage()");
+            }
+         }
+    })
+</script>

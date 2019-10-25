@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.CallBack = "CallBackPopUpModal(resp,tableId);";
+}
+
+<div id="modal-add-edit-@ViewBag.TableId" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="heading-popup-@ViewBag.TableId"></h5>
+            </div>
+            <div class="modal-body">
+                <partial name="_Form" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" id="btn-submit-@ViewBag.TableId">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    "use strict";
+
+    $(document).ready(function () {
+        $('#btn-submit-@ViewBag.TableId').click(function (e) {
+            $('#@ViewBag.FormId').submit();
+            e.preventDefault();
+            return false;
+        })
+        
+        $('#modal-add-edit-@ViewBag.TableId').on('hidden.bs.modal', function (e) {
+            $('.field-validation-error').empty();
+            $('form .input-validation-error').removeClass('input-validation-error');
+            $('#@ViewBag.FormId').trigger('reset');
+        });
+        $('#modal-add-edit-@ViewBag.TableId').on('shown.bs.modal', function (e) {
+            $("#@ViewBag.FormId")[0].scrollIntoView();
+            
+            showRemoveImage('#img-imagepath-@ViewBag.FormId');
+        });
+    });
+</script>
