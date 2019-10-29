@@ -1,4 +1,5 @@
 # TFriend
+* https://servertest.site/
 * Goals: Build a website that can manage your friends and relatives
 * Function:
 	* Register account and login. 
